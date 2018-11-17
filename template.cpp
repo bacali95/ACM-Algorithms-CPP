@@ -12,6 +12,12 @@ typedef long long ll;
 
 using namespace std;
 
+template<class T>
+ostream &operator<<(ostream &os, pair<T, T> p) {
+    os << p.first << " " << p.second;
+    return os;
+}
+
 int main(int argc, char** argv) {
 
 #ifndef ONLINE_JUDGE
