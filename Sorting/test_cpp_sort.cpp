@@ -2,6 +2,8 @@
 
 typedef long long ll;
 
+#define pb push_back
+
 using namespace std;
 
 int main(int argc, char **argv) {
@@ -24,6 +26,19 @@ int main(int argc, char **argv) {
     string s = "bacali";
     sort(s.begin(), s.end());
 
+    //Pair
+    vector<pair<ll, ll>> vp;
+    vp.pb({1, 5});
+    vp.pb({2, 3});
+    vp.pb({1, 2});
+    sort(vp.begin(), vp.end());
+
+    //Tuple
+    vector<tuple<ll, ll, ll>> vt;
+    vt.pb({1, 5, 6});
+    vt.pb({2, 5, 7});
+    vt.pb({1, 2, 4});
+    sort(vt.begin(), vt.end());
     return 0;
 }
 
