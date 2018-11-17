@@ -6,6 +6,7 @@
 
 typedef long long ll;
 
+#define parr(arr, size) for(int i=0;i<(size);i++) cout<<(arr)[i]<<" \n"[i==(size)-1]
 #define pb push_back
 #define mp make_pair
 
