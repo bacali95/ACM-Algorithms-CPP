@@ -1,5 +1,3 @@
-#include <utility>
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -9,29 +7,39 @@ typedef long long ll;
 map<char, ll> tab;
 map<char, string> coding;
 
-struct Node {
+typedef struct Node {
     Node *left;
     Node *right;
     char val;
     ll cnt;
 
+    Node() = default;
+
+    Node(const Node &a) {
+        cnt = a.cnt;
+        val = a.val;
+        left = a.left;
+        right = a.right;
+    }
+
     bool operator<(const Node &b) const {
         return cnt > b.cnt;
     }
-};
 
-void solve(Node *node, string code) {
-    if (node->left == nullptr && node->right == nullptr) {
-        coding[node->val] = move(code);
+} Node;
+
+void solve(Node node, string code) {
+    if (node.left == nullptr && node.right == nullptr) {
+        coding[node.val] = move(code);
         return;
     }
-    if (node->left != nullptr) {
+    if (node.left != nullptr) {
         string c = code + "1";
-        solve(node->left, c);
+        solve(*node.left, c);
     }
-    if (node->right != nullptr) {
+    if (node.right != nullptr) {
         string c = code + "0";
-        solve(node->right, c);
+        solve(*node.right, c);
     }
 }
 
@@ -44,9 +52,11 @@ int main(int argc, char **argv) {
     priority_queue<Node> q;
 
     for (auto a:tab) {
-        Node n{};
+        Node n;
         n.val = a.first;
         n.cnt = a.second;
+        n.left = nullptr;
+        n.right = nullptr;
         q.push(n);
     }
 
@@ -55,21 +65,21 @@ int main(int argc, char **argv) {
         q.pop();
         Node b = q.top();
         q.pop();
-        Node c{};
-
+        Node c;
         c.cnt = a.cnt + b.cnt;
-        c.left = &a;
-        c.right = &b;
+        c.val = '-';
+        c.left = new Node(a);
+        c.right = new Node(b);
 
         q.push(c);
     }
 
     Node root = q.top();
 
-    solve(&root, "");
+    solve(root, "");
 
-    for (auto a:coding) {
-        cout << a.first << " " << a.second << endl;
+    for (pair<char, string> item:coding) {
+        cout << item.first << " " << item.second << endl;
     }
 
     return 0;
