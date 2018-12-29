@@ -11,13 +11,13 @@ vector<vector<ll>> value;
 ll memo[1000][1000];
 
 ll solve(ll x, ll y) {
-    if (x == -1 || y == -1) {
+    if (x == n || y == n) {
         return 0;
     }
     if (memo[x][y] != -1) {
         return memo[x][y];
     }
-    return memo[x][y] = max(solve(x - 1, y), solve(x, y - 1)) + value[x][y];
+    return memo[x][y] = max(solve(x + 1, y), solve(x, y + 1)) + value[x][y];
 }
 
 int main(int argc, char **argv) {
@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
              {6, 3, 9, 7, 8}};
     n = value.size();
 
-    cout << "Val dp : " << solve(n - 1, n - 1) << endl;
+    cout << "Val dp : " << solve(0, 0) << endl;
 
     ll sum[n + 1][n + 1];
     memset(sum, 0, sizeof(sum));
