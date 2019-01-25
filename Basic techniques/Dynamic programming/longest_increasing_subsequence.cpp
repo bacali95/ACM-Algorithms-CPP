@@ -8,10 +8,6 @@ size_t n;
 vector<ll> v;
 
 ll LIS() {
-    if (n == 0) {
-        return 0;
-    }
-
     vector<ll> tail(n, 0);
     int length = 1;
 
@@ -31,11 +27,10 @@ ll LIS() {
     return length;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     v = {6, 2, 5, 1, 7, 4, 8, 3};
     n = v.size();
 
     cout << LIS() << endl;
-
     return 0;
 }
