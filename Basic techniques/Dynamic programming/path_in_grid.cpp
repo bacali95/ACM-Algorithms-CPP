@@ -20,7 +20,7 @@ ll solve(ll x, ll y) {
     return memo[x][y] = max(solve(x + 1, y), solve(x, y + 1)) + value[x][y];
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     memset(memo, -1, sizeof(memo));
     value = {{3, 7, 9, 2, 7},
              {9, 8, 3, 5, 5},
