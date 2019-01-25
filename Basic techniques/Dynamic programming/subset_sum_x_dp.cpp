@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int n(7);
+int n(4);
 vector<int> v;
 int dp[1000][1000];
 
@@ -18,7 +18,7 @@ int search(int i, int s) {
     return dp[i][s] = cnt;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     v = {1, 2, 3, 10};
     int s = 2;
     for (int i = 0; i < n; ++i) {
